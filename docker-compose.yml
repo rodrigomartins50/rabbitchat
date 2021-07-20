@@ -1,0 +1,85 @@
+version: '3.4'
+
+services:
+  rabbitchat.api:
+    image: ${DOCKER_REGISTRY-}rabbitchatapi
+    build:
+      context: .
+      dockerfile: src/RabbitChat.Api/Dockerfile
+    environment:
+      RABBITMQ__HOSTNAME: rabbitmq
+      RABBITMQ__PORT: 5672
+      RABBITMQ__USERNAME: mc
+      RABBITMQ__PASSWORD: mc2
+      RABBITMQ__VIRTUALHOST: main
+      DBHOST: database
+      DBPORT: 5432
+      DBUSER: postgres
+      DBPASSWORD: postgres
+      DBDATABASE: rabbit_chat
+    networks: 
+        - rabbitchat
+
+  rabbitchat.consumersendmessage2:
+    image: ${DOCKER_REGISTRY-}rabbitchatconsumersendmessage2
+    build:
+      context: .
+      dockerfile: src/RabbitChat.ConsumerSendMessage2/Dockerfile
+    environment:
+      RABBITMQ__HOSTNAME: rabbitmq
+      RABBITMQ__PORT: 5672
+      RABBITMQ__USERNAME: mc
+      RABBITMQ__PASSWORD: mc2
+      RABBITMQ__VIRTUALHOST: main
+      DBHOST: database
+      DBPORT: 5432
+      DBUSER: postgres
+      DBPASSWORD: postgres
+      DBDATABASE: rabbit_chat
+    networks: 
+        - rabbitchat
+
+
+  rabbitmq:    
+    build:
+      context: ./rabbitmq
+    ports:
+    - "15672:15672"  #Management
+    - "5672:5672"    #AMQP
+    environment:
+      RABBITMQ_DEFAULT_USER: mc
+      RABBITMQ_DEFAULT_PASS: mc2
+      RABBITMQ_DEFAULT_VHOST: main
+    volumes:
+      - mq_data:/var/lib/rabbitmq/mnesia
+    networks: 
+        - rabbitchat
+
+  database:
+    image: postgres:12
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=rabbit_chat
+      - PGDATA:/tmp
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - pgconf:/etc/postgresql
+      - pglog:/var/log/postgresql
+    ports:
+      - "55432:5432"
+    networks:
+      - rabbitchat
+
+volumes:
+  mq_data:
+  pgdata:
+    driver: local
+  pgconf:
+    driver: local
+  pglog:
+    driver: local
+
+networks:
+  rabbitchat:

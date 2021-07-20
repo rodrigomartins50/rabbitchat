@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RabbitChat.ConsumerSendMessage": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
