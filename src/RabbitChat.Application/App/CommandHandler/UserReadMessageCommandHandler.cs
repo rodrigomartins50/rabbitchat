@@ -1,10 +1,6 @@
 ﻿using MediatR;
 using RabbitChat.Application.App.Command;
 using RabbitChat.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +17,7 @@ namespace RabbitChat.Application.App.CommandHandler
 
         public Task<bool> Handle(UserReadMessageCommand request, CancellationToken cancellationToken)
         {
-            _messageService.ReadMessage(request.MessageId, request.UserId);
+            _messageService.ReadMessage(request.MessageId);
 
             return Task.FromResult(true);
         }

@@ -24,7 +24,8 @@ namespace RabbitChat.Shared.Consumer
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             this.CreateRetryAndUnroutedSchema("rabbit_chat", new Dictionary<string, string> {
-                { "message", "message"}
+                { "message", "message"},
+                { "read_message", "read_message"}
             });
 
             this.CreateEventBus("event-hub");

@@ -17,3 +17,10 @@ services:
     ports:
       - "80"
 
+
+  rabbitchat.consumeruserreadmessage:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+

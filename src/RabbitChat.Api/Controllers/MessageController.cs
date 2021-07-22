@@ -30,5 +30,15 @@ namespace RabbitChat.Api.Controllers
            );
         }
 
+        [HttpPost("ReadMessage")]
+        public void ReadMessage(UserReadMessageCommand dto, [FromServices] SimpleAmqpRpc simpleAmqpRpc)
+        {
+            simpleAmqpRpc.FireAndForget<Object>(
+                exchangeName: "",
+                routingKey: "rabbit_chat_read_message_queue",
+                requestModel: dto
+           );
+        }
+
     }
 }

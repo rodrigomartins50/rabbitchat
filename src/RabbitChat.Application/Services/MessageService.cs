@@ -17,11 +17,9 @@ namespace RabbitChat.Service
             return base.Insert(entity);
         }
 
-        internal void ReadMessage(Guid messageId, Guid userId)
+        internal void ReadMessage(Guid messageId)
         {
             var message = _repository.Get(messageId);
-
-            message.FromUser = new User { Id = userId };
 
             message.Read = true;
 

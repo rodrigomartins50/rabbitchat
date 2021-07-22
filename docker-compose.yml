@@ -40,6 +40,25 @@ services:
     networks: 
         - rabbitchat
 
+  rabbitchat.consumeruserreadmessage:
+    image: ${DOCKER_REGISTRY-}rabbitchatconsumeruserreadmessage
+    build:
+      context: .
+      dockerfile: src/RabbitChat.ConsumerUserReadMessage/Dockerfile
+    environment:
+      RABBITMQ__HOSTNAME: rabbitmq
+      RABBITMQ__PORT: 5672
+      RABBITMQ__USERNAME: mc
+      RABBITMQ__PASSWORD: mc2
+      RABBITMQ__VIRTUALHOST: main
+      DBHOST: database
+      DBPORT: 5432
+      DBUSER: postgres
+      DBPASSWORD: postgres
+      DBDATABASE: rabbit_chat
+    networks: 
+        - rabbitchat
+
   rabbitmq:    
     build:
       context: ./rabbitmq
@@ -69,8 +88,6 @@ services:
       - "55432:5432"
     networks:
       - rabbitchat
-  
-
 
 volumes:
   mq_data:
@@ -79,4 +96,5 @@ volumes:
 
 networks:
   rabbitchat:
+
 

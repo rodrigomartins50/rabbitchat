@@ -3,7 +3,7 @@ using RabbitChat.Application.App.Command;
 using System;
 using System.Threading.Tasks;
 
-namespace RabbitChat.ConsumerSendMessage
+namespace RabbitChat.ConsumerUserReadMessage
 {
     public class TaskExecution
     {
@@ -14,7 +14,7 @@ namespace RabbitChat.ConsumerSendMessage
             _mediator = mediator;
         }
 
-        public async Task Execute(SendMessageCommand command)
+        public async Task Execute(UserReadMessageCommand command)
         {
             var response = await _mediator.Send(command);
 
