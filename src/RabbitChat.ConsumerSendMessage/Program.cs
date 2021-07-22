@@ -3,11 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitChat.Application.App.Command;
-using RabbitChat.ConsumerSendMessage2.Config;
-using RabbitChat.Domain.Entities;
 using RabbitChat.Infra.AmqpAdapters.Consumer;
+using RabbitChat.Shared.Config;
+using RabbitChat.Shared.Consumer;
 
-namespace RabbitChat.ConsumerSendMessage2
+namespace RabbitChat.ConsumerSendMessage
 {
     public class Program
     {
@@ -31,7 +31,6 @@ namespace RabbitChat.ConsumerSendMessage2
             ushort prefetchCount = hostContext.Configuration.GetValue<ushort>("RABBITMQ:PREFETCHCOUNT");
 
             services.AddQueueWork<TaskExecution, SendMessageCommand>("rabbit_chat_message_queue", prefetchCount, async (svc, data) => await svc.Execute(data));
-
         }
     }
 }

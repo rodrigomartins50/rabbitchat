@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RabbitChat.ConsumerSendMessage;
+using RabbitChat.Shared.Consumer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +21,19 @@ namespace RabbitChat.ConsumerUserReadMessage
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                .ConfigureServices(Configure);
+
+        private static void Configure(HostBuilderContext hostContext, IServiceCollection services)
+        {
+            services.ResolveDependencies(hostContext);
+
+            services.AddTransient<TaskExecution>();
+
+            services.AddHostedService<SetupWorker>();
+
+            ushort prefetchCount = hostContext.Configuration.GetValue<ushort>("RABBITMQ:PREFETCHCOUNT");
+
+            services.AddQueueWork<TaskExecution, SendMessageCommand>("rabbit_chat_message_queue", prefetchCount, async (svc, data) => await svc.Execute(data));
+        }
     }
 }

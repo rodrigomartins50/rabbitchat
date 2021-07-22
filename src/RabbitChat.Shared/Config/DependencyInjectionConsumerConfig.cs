@@ -12,9 +12,9 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Exceptions;
 using System;
 
-namespace RabbitChat.ConsumerSendMessage2.Config
+namespace RabbitChat.Shared.Config
 {
-    public static class DependencyInjectionConfig
+    public static class DependencyInjectionConsumerConfig
     {
         public static IServiceCollection ResolveDependencies(this IServiceCollection services, HostBuilderContext hostContext)
         {

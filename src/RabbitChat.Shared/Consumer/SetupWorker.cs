@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RabbitChat.ConsumerSendMessage2
+namespace RabbitChat.Shared.Consumer
 {
     public class SetupWorker : BackgroundService
     {
