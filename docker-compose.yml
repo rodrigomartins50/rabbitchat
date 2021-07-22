@@ -20,11 +20,12 @@ services:
     networks: 
       - rabbitchat
 
-  rabbitchat.consumersendmessage2:
-    image: ${DOCKER_REGISTRY-}rabbitchatconsumersendmessage2
+
+  rabbitchat.consumersendmessage:
+    image: ${DOCKER_REGISTRY-}rabbitchatconsumersendmessage
     build:
       context: .
-      dockerfile: src/RabbitChat.ConsumerSendMessage2/Dockerfile
+      dockerfile: src/RabbitChat.ConsumerSendMessage/Dockerfile
     environment:
       RABBITMQ__HOSTNAME: rabbitmq
       RABBITMQ__PORT: 5672
@@ -38,7 +39,6 @@ services:
       DBDATABASE: rabbit_chat
     networks: 
         - rabbitchat
-
 
   rabbitmq:    
     build:
@@ -70,6 +70,8 @@ services:
     networks:
       - rabbitchat
   
+
+
 volumes:
   mq_data:
   pgdata:
@@ -77,3 +79,4 @@ volumes:
 
 networks:
   rabbitchat:
+
