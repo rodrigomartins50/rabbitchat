@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using RabbitChat.Api.Hubs;
 using RabbitChat.Infra.AmqpAdapters.Rpc;
 using RabbitChat.Infra.AmqpAdapters.Serialization;
 using RabbitMQ.Client;
@@ -39,6 +40,8 @@ namespace RabbitChat.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
+
             services.AddSingleton(sp =>
             {
                 ConnectionFactory factory = new ConnectionFactory();
@@ -58,6 +61,14 @@ namespace RabbitChat.Api
                     TimeSpan.FromSeconds(5)
                 )
             );
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:4200", "http://localhost:8080")
+                       .AllowAnyHeader()
+                       .WithMethods("GET", "POST")
+                       .AllowCredentials();
+            }));
 
 
             services.AddAuthorization();
@@ -81,6 +92,8 @@ namespace RabbitChat.Api
 
             //app.UseHttpsRedirection();
 
+            app.UseCors("MyPolicy");
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -89,6 +102,11 @@ namespace RabbitChat.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<RabbitChatHub>("/rabbitchathub", options =>
+                {
+                    options.ApplicationMaxBufferSize = 1024000;
+                    options.TransportMaxBufferSize = 0;
+                });
             });
         }
     }
