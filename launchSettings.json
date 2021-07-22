@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "serviceActions": {
+        "database": "StartWithoutDebugging",
+        "rabbitchat.api": "StartDebugging",
+        "rabbitchat.consumersendmessage2": "StartDebugging",
+        "rabbitmq": "StartWithoutDebugging"
+      },
+      "commandVersion": "1.0"
+    }
+  }
+}

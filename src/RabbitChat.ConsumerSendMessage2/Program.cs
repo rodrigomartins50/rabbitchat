@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RabbitChat.Application.App.Command;
 using RabbitChat.ConsumerSendMessage2.Config;
 using RabbitChat.Domain.Entities;
 using RabbitChat.Infra.AmqpAdapters.Consumer;
@@ -23,13 +24,13 @@ namespace RabbitChat.ConsumerSendMessage2
         {
             services.ResolveDependencies(hostContext);
 
-            services.AddTransient<Execution>();
+            services.AddTransient<TaskExecution>();
 
             services.AddHostedService<SetupWorker>();
 
             ushort prefetchCount = hostContext.Configuration.GetValue<ushort>("RABBITMQ:PREFETCHCOUNT");
 
-            services.AddQueueWork<Execution, Message>("rabbit_chat_message_queue", prefetchCount, async (svc, data) => await svc.Execute(data));
+            services.AddQueueWork<TaskExecution, SendMessageCommand>("rabbit_chat_message_queue", prefetchCount, async (svc, data) => await svc.Execute(data));
 
         }
     }

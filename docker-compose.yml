@@ -18,7 +18,7 @@ services:
       DBPASSWORD: postgres
       DBDATABASE: rabbit_chat
     networks: 
-        - rabbitchat
+      - rabbitchat
 
   rabbitchat.consumersendmessage2:
     image: ${DOCKER_REGISTRY-}rabbitchatconsumersendmessage2
@@ -65,20 +65,14 @@ services:
       - PGDATA:/tmp
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - pgconf:/etc/postgresql
-      - pglog:/var/log/postgresql
     ports:
       - "55432:5432"
     networks:
       - rabbitchat
-
+  
 volumes:
   mq_data:
   pgdata:
-    driver: local
-  pgconf:
-    driver: local
-  pglog:
     driver: local
 
 networks:

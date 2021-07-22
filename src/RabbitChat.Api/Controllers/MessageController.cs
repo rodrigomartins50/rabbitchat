@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RabbitChat.Api.Controllers.MessageCtrl;
+using RabbitChat.Application.App.Command;
 using RabbitChat.Infra.AmqpAdapters.Rpc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RabbitChat.Api.Controllers
 {
@@ -21,8 +19,10 @@ namespace RabbitChat.Api.Controllers
         }
 
         [HttpPost]
-        public void Post(CreateMessageDto dto, [FromServices] SimpleAmqpRpc simpleAmqpRpc)
+        public void Post(SendMessageCommand dto, [FromServices] SimpleAmqpRpc simpleAmqpRpc)
         {
+            dto.DateRegister = DateTime.Now;
+
             simpleAmqpRpc.FireAndForget<Object>(
                 exchangeName: "",
                 routingKey: "rabbit_chat_message_queue",

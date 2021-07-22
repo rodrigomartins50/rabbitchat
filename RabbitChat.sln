@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.Api", "src\RabbitChat.Api\RabbitChat.Api.csproj", "{206143BC-AA0B-43C3-B3EE-01B132ABAC1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.Api", "src\RabbitChat.Api\RabbitChat.Api.csproj", "{206143BC-AA0B-43C3-B3EE-01B132ABAC1C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A4B01A4B-15A8-4C82-8A2A-F8B2A6FD3A91}"
 EndProject
@@ -11,19 +11,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.ConsumerSendMess
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.ConsumerSendReadMessage", "src\RabbitChat.ConsumerSendReadMessage\RabbitChat.ConsumerSendReadMessage.csproj", "{02C47D9B-D26B-4320-9813-9D65B595B0E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.Infra.AmqpAdapters", "src\RabbitChat.Infra.AmqpAdapters\RabbitChat.Infra.AmqpAdapters.csproj", "{232E673B-0046-436E-BDE5-59389743B99D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.Infra.AmqpAdapters", "src\RabbitChat.Infra.AmqpAdapters\RabbitChat.Infra.AmqpAdapters.csproj", "{232E673B-0046-436E-BDE5-59389743B99D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.ConsumerSendMessage", "src\RabbitChat.ConsumerSendMessage\RabbitChat.ConsumerSendMessage.csproj", "{C07A6B1D-AEBD-4907-95D5-40A5C1A6501A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{4BDB81D7-CD61-45BE-9F0C-CB57CB93EBF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.Domain", "src\RabbitChat.Domain\RabbitChat.Domain.csproj", "{334900C4-CA77-444F-9011-CDE30F6A1BCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.ConsumerSendMessage2", "src\RabbitChat.ConsumerSendMessage2\RabbitChat.ConsumerSendMessage2.csproj", "{23DAAB09-29BB-422E-B17F-433E3581B78F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.Data", "src\RabbitChat.Data\RabbitChat.Data.csproj", "{FACA78DD-056B-4084-A1B3-F102111C9AE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.Application", "src\RabbitChat.Application\RabbitChat.Application.csproj", "{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.Service", "src\RabbitChat.Service\RabbitChat.Service.csproj", "{BBC95A8A-AEB1-49ED-98FA-F3F14B5A5FDB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{029BEA0A-FDDC-4DF9-85C1-9A4F05E18278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{4BDB81D7-CD61-45BE-9F0C-CB57CB93EBF4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consummer", "Consummer", "{D4EBC52F-9235-4366-B659-CE6383DB5462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.ConsumerSendMessage2", "src\RabbitChat.ConsumerSendMessage2\RabbitChat.ConsumerSendMessage2.csproj", "{23DAAB09-29BB-422E-B17F-433E3581B78F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{65D9B370-1FFC-4A95-A46B-525A0989F9EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,22 +51,6 @@ Global
 		{232E673B-0046-436E-BDE5-59389743B99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{232E673B-0046-436E-BDE5-59389743B99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{232E673B-0046-436E-BDE5-59389743B99D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C07A6B1D-AEBD-4907-95D5-40A5C1A6501A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C07A6B1D-AEBD-4907-95D5-40A5C1A6501A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C07A6B1D-AEBD-4907-95D5-40A5C1A6501A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C07A6B1D-AEBD-4907-95D5-40A5C1A6501A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{334900C4-CA77-444F-9011-CDE30F6A1BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{334900C4-CA77-444F-9011-CDE30F6A1BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{334900C4-CA77-444F-9011-CDE30F6A1BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{334900C4-CA77-444F-9011-CDE30F6A1BCD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FACA78DD-056B-4084-A1B3-F102111C9AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FACA78DD-056B-4084-A1B3-F102111C9AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FACA78DD-056B-4084-A1B3-F102111C9AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FACA78DD-056B-4084-A1B3-F102111C9AE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBC95A8A-AEB1-49ED-98FA-F3F14B5A5FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBC95A8A-AEB1-49ED-98FA-F3F14B5A5FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBC95A8A-AEB1-49ED-98FA-F3F14B5A5FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBC95A8A-AEB1-49ED-98FA-F3F14B5A5FDB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BDB81D7-CD61-45BE-9F0C-CB57CB93EBF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4BDB81D7-CD61-45BE-9F0C-CB57CB93EBF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BDB81D7-CD61-45BE-9F0C-CB57CB93EBF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,9 +59,17 @@ Global
 		{23DAAB09-29BB-422E-B17F-433E3581B78F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23DAAB09-29BB-422E-B17F-433E3581B78F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23DAAB09-29BB-422E-B17F-433E3581B78F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{206143BC-AA0B-43C3-B3EE-01B132ABAC1C} = {029BEA0A-FDDC-4DF9-85C1-9A4F05E18278}
+		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750} = {65D9B370-1FFC-4A95-A46B-525A0989F9EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {32836A9C-C054-40A6-B94A-FC143C99D0EE}

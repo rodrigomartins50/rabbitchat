@@ -1,18 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using RabbitChat.Data;
 using RabbitChat.Data.Repositories;
-using RabbitChat.Domain.Repositories;
-using RabbitChat.Domain.Services;
 using RabbitChat.Infra.AmqpAdapters.Serialization;
 using RabbitChat.Service;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Exceptions;
 using System;
-using System.Linq;
 
 namespace RabbitChat.ConsumerSendMessage2.Config
 {
@@ -20,6 +18,8 @@ namespace RabbitChat.ConsumerSendMessage2.Config
     {
         public static IServiceCollection ResolveDependencies(this IServiceCollection services, HostBuilderContext hostContext)
         {
+            InjectMediatr(services);
+
             InjectEntityFramework(services, hostContext);
 
             InjectDependenciesRepositories(services);
@@ -28,6 +28,13 @@ namespace RabbitChat.ConsumerSendMessage2.Config
             InjectDependencyRabbitMQ(services, hostContext);
 
             return services;
+        }
+
+        private static void InjectMediatr(IServiceCollection services)
+        {
+            var assembly = AppDomain.CurrentDomain.Load("RabbitChat.Application");
+
+            services.AddMediatR(assembly);
         }
 
         private static void InjectEntityFramework(IServiceCollection services, HostBuilderContext hostContext)
@@ -50,14 +57,14 @@ namespace RabbitChat.ConsumerSendMessage2.Config
 
         private static void InjectDependenciesRepositories(IServiceCollection services)
         {
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IMessageRepository, MessageRepository>();
+            services.AddTransient<UserRepository>();
+            services.AddTransient<MessageRepository>();
         }
 
         private static void InjectDependenciesServies(IServiceCollection services)
         {
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IMessageService, MessageService>();
+            services.AddTransient<UserService>();
+            services.AddTransient<MessageService>();
         }
 
         private static void InjectDependencyRabbitMQ(IServiceCollection services, HostBuilderContext hostContext)

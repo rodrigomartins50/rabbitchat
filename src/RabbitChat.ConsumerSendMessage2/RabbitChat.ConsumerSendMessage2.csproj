@@ -13,13 +13,13 @@
     <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RabbitChat.Data\RabbitChat.Data.csproj" />
-    <ProjectReference Include="..\RabbitChat.Domain\RabbitChat.Domain.csproj" />
+    <ProjectReference Include="..\RabbitChat.Application\RabbitChat.Application.csproj" />
     <ProjectReference Include="..\RabbitChat.Infra.AmqpAdapters\RabbitChat.Infra.AmqpAdapters.csproj" />
-    <ProjectReference Include="..\RabbitChat.Service\RabbitChat.Service.csproj" />
   </ItemGroup>
 
 </Project>
