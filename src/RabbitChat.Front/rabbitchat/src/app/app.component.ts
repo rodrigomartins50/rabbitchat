@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MessageChat } from './dto/messageChat';
 import { SignalRService } from './services/sginal-r.service';
+import { GlobalStore } from './shared/store/global-store';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +9,24 @@ import { SignalRService } from './services/sginal-r.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'rabbitchat';
 
-constructor(private signalRService: SignalRService) {
+messages: MessageChat[];
+
+constructor(
+  private signalRService: SignalRService,
+  private globalStore: GlobalStore
+) {
   this.signalRService.startConnection();
 
   this.signalRService.receiveNewMessessage((dto: string) => {
-    this.title = dto;
-  })
+
+    let message = new MessageChat();
+    message.text = dto;
+
+    this.messages.push(message);
+  });
+
+  this.messages = this.globalStore.getMessages();
 }
   
 }

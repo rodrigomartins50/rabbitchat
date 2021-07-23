@@ -1,0 +1,15 @@
+.users {
+    
+    position: relative;
+    height: 100%;
+    padding: 7px;
+    color: #FF6600;
+    border-top: 2px solid #FF6600;
+    background: #f9fafb;
+}
+
+.send-button {
+    position: absolute;
+    top: 80px;
+    right: 28px;
+}

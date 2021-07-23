@@ -22,6 +22,12 @@ namespace RabbitChat.ConsumerSendMessage
 
         private static void Configure(HostBuilderContext hostContext, IServiceCollection services)
         {
+
+            var redisConn = "redis:6379,password=Redis2021!";
+            services
+              .AddSignalR()
+              .AddRedis().AddStackExchangeRedis(redisConn);
+
             services.ResolveDependencies(hostContext);
 
             services.AddTransient<TaskExecution>();

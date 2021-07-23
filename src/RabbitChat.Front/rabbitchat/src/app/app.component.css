@@ -1,0 +1,28 @@
+.container-rabbitchat {
+    display: grid;
+    grid:
+		"logo logo" 50px 
+		"users content" 1fr
+		"message message" 150px 
+	/ 250px 1fr;
+    height: 100vh;
+    width: 100vw;
+}
+
+.logo {
+    grid-area: logo;
+}
+
+.content {
+    grid-area: content;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.users {
+    grid-area: users;
+}
+
+.message {
+    grid-area: message;
+}

@@ -1,30 +1,14 @@
-using Keycloak.Net;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using RabbitChat.Api.Hubs;
+using RabbitChat.Application.SignalR;
 using RabbitChat.Infra.AmqpAdapters.Rpc;
 using RabbitChat.Infra.AmqpAdapters.Serialization;
 using RabbitMQ.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace RabbitChat.Api
 {
@@ -40,7 +24,12 @@ namespace RabbitChat.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSignalR();
+            var redisConn = "redis:6379,password=Redis2021!";
+            services
+              .AddSignalR()
+              .AddRedis().AddStackExchangeRedis(redisConn);
+
+            //services.AddSignalR();
 
             services.AddSingleton(sp =>
             {

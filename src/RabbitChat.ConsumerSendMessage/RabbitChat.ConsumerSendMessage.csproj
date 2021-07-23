@@ -16,6 +16,8 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="5.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Redis" Version="1.1.5" />
   </ItemGroup>
 
   <ItemGroup>

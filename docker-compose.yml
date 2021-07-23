@@ -89,6 +89,14 @@ services:
     networks:
       - rabbitchat
 
+  redis:
+    image: redis:6.2
+    command: redis-server --requirepass Redis2021!
+    ports:
+      - 6379:6379
+    networks:
+      - rabbitchat
+
 volumes:
   mq_data:
   pgdata:

@@ -3,6 +3,7 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "serviceActions": {
+        "redis": "StartWithoutDebugging",
         "database": "StartWithoutDebugging",
         "rabbitchat.api": "StartDebugging",
         "rabbitchat.consumersendmessage": "StartDebugging",

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace RabbitChat.Api.Hubs
+namespace RabbitChat.Application.SignalR
 {
     public class RabbitChatHub : Hub
     {

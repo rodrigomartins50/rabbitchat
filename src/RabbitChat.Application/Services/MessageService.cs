@@ -1,4 +1,6 @@
-﻿using RabbitChat.Data.Repositories;
+﻿using Microsoft.AspNetCore.SignalR;
+using RabbitChat.Application.SignalR;
+using RabbitChat.Data.Repositories;
 using RabbitChat.Domain.Entities;
 using System;
 
@@ -6,15 +8,23 @@ namespace RabbitChat.Service
 {
     public class MessageService : BaseService<Message>
     {
-        public MessageService(MessageRepository repository) : base(repository)
+        private IHubContext<RabbitChatHub> _hub;
+
+        public MessageService(MessageRepository repository, IHubContext<RabbitChatHub> hub) : base(repository)
         {
+            _hub = hub;
         }
 
         public override Message Insert(Message entity)
         {
             entity.DateRegister = DateTime.Now;
 
-            return base.Insert(entity);
+            var message = base.Insert(entity);
+
+
+            _hub.Clients.All.SendAsync("ReceiveNewMessage", entity.Text);
+
+            return message;
         }
 
         internal void ReadMessage(Guid messageId)
