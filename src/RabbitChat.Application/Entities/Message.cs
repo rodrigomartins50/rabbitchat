@@ -8,12 +8,6 @@ namespace RabbitChat.Domain.Entities
 
         public DateTime DateRegister { get; set; }
 
-        public User FromUser { get; set; }
-
-        public User ToUser { get; set; }
-
-        public bool Received { get; set; }
-
-        public bool Read { get; set; }
+        public String FromUser { get; set; }
     }
 }

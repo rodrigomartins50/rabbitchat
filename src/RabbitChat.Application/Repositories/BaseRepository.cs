@@ -25,15 +25,14 @@ namespace RabbitChat.Data
             return _dataSet.Where(m => m.Id == id).Take(1).Single();
         }
 
-        public PagedList<TType> GetList<TType>(Expression<Func<T, bool>> where, 
-                                           Expression<Func<T, TType>> select, 
-                                           Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, 
-                                           int pageNumber = 0, 
-                                           int pageSize = 0) where TType : class
+        public PagedList<T> GetList(Expression<Func<T, bool>> where,
+                                    Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, 
+                                    int pageNumber = 0, 
+                                    int pageSize = 0)
         {
-            PagedList<TType> pagedList = new PagedList<TType>();
+            PagedList<T> pagedList = new PagedList<T>();
 
-            List<TType> list = null;
+            List<T> list = null;
 
             var query = _dataSet.Where(where).OrderBy(t => t.Id);
 
@@ -44,8 +43,7 @@ namespace RabbitChat.Data
 
             if (pageNumber > 0 || pageSize > 0)
             {
-                list = query.Select(select)
-                            .AsNoTracking()
+                list = query.AsNoTracking()
                             .Skip(pageNumber * pageSize)
                             .Take(pageSize)
                             .ToList();
@@ -54,7 +52,7 @@ namespace RabbitChat.Data
             }
             else
             {
-                list = query.Select(select).AsNoTracking().ToList();
+                list = query.AsNoTracking().ToList();
 
                 pagedList.Total = list.Count;
             }

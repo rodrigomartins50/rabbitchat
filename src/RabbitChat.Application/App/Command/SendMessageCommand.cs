@@ -7,9 +7,7 @@ namespace RabbitChat.Application.App.Command
     {
         public string Text { get; set; }
 
-        public Guid FromUserId { get; set; }
-
-        public Guid ToUserId { get; set; }
+        public String FromUserId { get; set; }
 
         public DateTime DateRegister { get; set; }
     }
