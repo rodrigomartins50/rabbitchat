@@ -1,0 +1,32 @@
+.insert-name {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(0 0 0/ 0.30);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insert-name > div {
+    background: #fff;
+    max-width: 280px;
+    flex: 1;
+    height: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    padding-top: 17px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+}

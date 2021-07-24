@@ -17,6 +17,8 @@ services:
       DBUSER: postgres
       DBPASSWORD: postgres
       DBDATABASE: rabbit_chat
+    ports:
+      - 8779:443
     networks: 
       - rabbitchat
 

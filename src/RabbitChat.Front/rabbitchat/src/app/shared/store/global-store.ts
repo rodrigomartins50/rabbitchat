@@ -7,10 +7,11 @@ export class GlobalStore {
     private _connectionState$ = new BehaviorSubject<StateConnectionEnum>(StateConnectionEnum.fechado);
     public connectionState$ = this._connectionState$.asObservable();
 
-
     private _messages$ = new BehaviorSubject<MessageChat[]>([]);
     public messages$ = this._messages$.asObservable();
 
+    private _username$ = new BehaviorSubject<string>("");
+    public username$ = this._username$.asObservable();
 
     getConnectionState(): StateConnectionEnum {
         return this._connectionState$.getValue();
@@ -22,5 +23,13 @@ export class GlobalStore {
 
     getMessages(): MessageChat[] {
         return this._messages$.getValue();
+    }
+
+    getUsername(): String {
+        return this._username$.getValue();
+    }
+
+    setUsername(username: string) {
+        this._username$.next(username);
     }
 }

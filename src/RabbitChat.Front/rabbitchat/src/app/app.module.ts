@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { MessageService } from './services/message-service';
 import { HttpClientModule } from '@angular/common/http';
 import { SendMessageComponent } from './components/send-message/send-message.component';
+import { InsertNameComponent } from './components/insert-name/insert-name.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SendMessageComponent } from './components/send-message/send-message.com
     HeaderComponent,
     ContentComponent,
     UsersComponent,
-    SendMessageComponent
+    SendMessageComponent,
+    InsertNameComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

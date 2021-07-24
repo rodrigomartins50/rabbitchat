@@ -5,28 +5,41 @@ import { GlobalStore } from './shared/store/global-store';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
 
-messages: MessageChat[];
+  messages: MessageChat[];
+  username: string;
 
-constructor(
-  private signalRService: SignalRService,
-  private globalStore: GlobalStore
-) {
-  this.signalRService.startConnection();
+  constructor(
+    private signalRService: SignalRService,
+    private globalStore: GlobalStore
+  ) {
+    this.username = "";
+    this.messages = this.globalStore.getMessages();
 
-  this.signalRService.receiveNewMessessage((dto: string) => {
+    this.watchChangeUsername();
+  }
 
-    let message = new MessageChat();
-    message.text = dto;
+  private watchChangeUsername() {
+    this.globalStore.username$.subscribe(username => {
+      this.username = username
 
-    this.messages.push(message);
-  });
-
-  this.messages = this.globalStore.getMessages();
-}
+      if(this.username && this.username != '') {
+        this.signalRService.startConnection();
+        this.watchEventNewMessage();
+      }
+    });
+  }
   
+  private watchEventNewMessage() {
+    this.signalRService.receiveNewMessessage((dto: string) => {
+
+      let message = new MessageChat();
+      message.text = dto;
+
+      this.messages.push(message);
+    });
+  }  
 }
