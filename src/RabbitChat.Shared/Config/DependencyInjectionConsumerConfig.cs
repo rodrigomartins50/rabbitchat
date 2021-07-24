@@ -7,7 +7,6 @@ using Polly;
 using RabbitChat.Data;
 using RabbitChat.Data.Repositories;
 using RabbitChat.Infra.AmqpAdapters.Serialization;
-using RabbitChat.Service;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Exceptions;
 using System;
@@ -23,7 +22,6 @@ namespace RabbitChat.Shared.Config
             InjectEntityFramework(services, hostContext);
 
             InjectDependenciesRepositories(services);
-            InjectDependenciesServies(services);
 
             InjectDependencyRabbitMQ(services, hostContext);
 
@@ -57,14 +55,7 @@ namespace RabbitChat.Shared.Config
 
         private static void InjectDependenciesRepositories(IServiceCollection services)
         {
-            services.AddTransient<UserRepository>();
             services.AddTransient<MessageRepository>();
-        }
-
-        private static void InjectDependenciesServies(IServiceCollection services)
-        {
-            services.AddTransient<UserService>();
-            services.AddTransient<MessageService>();
         }
 
         private static void InjectDependencyRabbitMQ(IServiceCollection services, HostBuilderContext hostContext)

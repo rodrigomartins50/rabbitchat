@@ -31,12 +31,12 @@ namespace RabbitChat.Api.Controllers
            );
         }
 
-        [HttpPost("ReadMessage")]
-        public void ReadMessage(UserReadMessageCommand dto, [FromServices] SimpleAmqpRpc simpleAmqpRpc)
+        [HttpPost("LoadMessages")]
+        public void ReadMessage(LoadMessagesCommand dto, [FromServices] SimpleAmqpRpc simpleAmqpRpc)
         {
             simpleAmqpRpc.FireAndForget<Object>(
                 exchangeName: "",
-                routingKey: "rabbit_chat_read_message_queue",
+                routingKey: "rabbit_chat_load_messages_queue",
                 requestModel: dto
            );
         }

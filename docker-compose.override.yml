@@ -18,7 +18,7 @@ services:
       - "80"
 
 
-  rabbitchat.consumeruserreadmessage:
+  rabbitchat.consumerloadmessages:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

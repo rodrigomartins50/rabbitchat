@@ -6,7 +6,6 @@ namespace RabbitChat.Data
     public class RabbitChatContext : DbContext
     {
         public DbSet<Message> Messages { get; set; }
-        public DbSet<User> Users { get; set; }
 
         public RabbitChatContext(DbContextOptions options) : base(options)
         {

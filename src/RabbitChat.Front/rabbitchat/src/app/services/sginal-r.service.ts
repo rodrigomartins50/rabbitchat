@@ -54,4 +54,10 @@ export class SignalRService {
     });
   }
 
+  public loadMessessages(methodReturn: any): void {
+    this.hubConnection.on("LoadMessages", (dto) => {
+        methodReturn(dto);
+    });
+  }
+
 }

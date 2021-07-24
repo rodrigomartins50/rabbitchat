@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { LoadMessagesDto } from './dto/load-messages-dto';
 import { MessageChat } from './dto/messageChat';
+import { MessageService } from './services/message-service';
 import { SignalRService } from './services/sginal-r.service';
 import { GlobalStore } from './shared/store/global-store';
 
@@ -14,7 +16,8 @@ export class AppComponent {
 
   constructor(
     private signalRService: SignalRService,
-    private globalStore: GlobalStore
+    private globalStore: GlobalStore,
+    private messageService: MessageService
   ) {
     this.username = "";
     this.messages = this.globalStore.getMessages();
@@ -29,17 +32,27 @@ export class AppComponent {
       if(this.username && this.username != '') {
         this.signalRService.startConnection();
         this.watchEventNewMessage();
+        this.loadInitialMessages();
+        this.watchLoadMessages();
       }
     });
   }
-  
+
   private watchEventNewMessage() {
-    this.signalRService.receiveNewMessessage((dto: string) => {
-
-      let message = new MessageChat();
-      message.text = dto;
-
-      this.messages.push(message);
+    this.signalRService.receiveNewMessessage((dto: MessageChat) => {
+      this.messages.push(dto);
     });
   }  
+
+  private loadInitialMessages() {
+    let dto = new LoadMessagesDto();
+
+    this.messageService.load(dto).subscribe(dto => true);
+  }
+
+  private watchLoadMessages() {
+    this.signalRService.loadMessessages((dto: MessageChat) => {
+      this.messages.push(dto);
+    });
+  }
 }

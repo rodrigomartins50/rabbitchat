@@ -42,11 +42,12 @@ services:
     networks: 
         - rabbitchat
 
-  rabbitchat.consumeruserreadmessage:
-    image: ${DOCKER_REGISTRY-}rabbitchatconsumeruserreadmessage
+
+  rabbitchat.consumerloadmessages:
+    image: ${DOCKER_REGISTRY-}rabbitchatconsumerloadmessages
     build:
       context: .
-      dockerfile: src/RabbitChat.ConsumerUserReadMessage/Dockerfile
+      dockerfile: src/RabbitChat.ConsumerLoadMessages/Dockerfile
     environment:
       RABBITMQ__HOSTNAME: rabbitmq
       RABBITMQ__PORT: 5672
@@ -99,6 +100,8 @@ services:
     networks:
       - rabbitchat
 
+
+
 volumes:
   mq_data:
   pgdata:
@@ -106,5 +109,6 @@ volumes:
 
 networks:
   rabbitchat:
+
 
 

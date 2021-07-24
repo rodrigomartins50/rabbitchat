@@ -1,0 +1,13 @@
+.container-message {
+    padding-left: 10px;
+    padding-top: 10px;
+    border-bottom: 1px dotted #ccc;
+}
+
+.message {
+    padding-left: 15px;
+}
+
+.user-datetime {
+    color: #FF6600;
+}

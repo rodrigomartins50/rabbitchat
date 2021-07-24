@@ -17,6 +17,7 @@ namespace RabbitChat.Application.App.CommandHandler
         public SendMessageCommandHandler(MessageRepository messageRepository, IHubContext<RabbitChatHub> hub)
         {
             _messageRepository = messageRepository;
+            _hub = hub;
         }
 
         public Task<bool> Handle(SendMessageCommand request, CancellationToken cancellationToken)
@@ -24,11 +25,15 @@ namespace RabbitChat.Application.App.CommandHandler
             var message = new Message();
 
             message.Text = request.Text;
+            message.FromUser = request.FromUser;
             message.DateRegister = request.DateRegister;
 
             message = this._messageRepository.Insert(message);
 
-            _hub.Clients.All.SendAsync("ReceiveNewMessage", message);
+            if (_hub != null)
+            {
+                _hub.Clients.All.SendAsync("ReceiveNewMessage", message);
+            }
 
             return Task.FromResult(true);
         }

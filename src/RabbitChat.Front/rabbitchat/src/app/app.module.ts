@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SendMessageComponent } from './components/send-message/send-message.component';
 import { InsertNameComponent } from './components/insert-name/insert-name.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ChatComponent } from './components/chat/chat.component';
     UsersComponent,
     SendMessageComponent,
     InsertNameComponent,
-    ChatComponent
+    ChatComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

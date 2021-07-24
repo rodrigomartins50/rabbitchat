@@ -7,7 +7,7 @@
         "database": "StartWithoutDebugging",
         "rabbitchat.api": "StartDebugging",
         "rabbitchat.consumersendmessage": "StartDebugging",
-        "rabbitchat.consumeruserreadmessage": "StartDebugging",
+        "rabbitchat.consumerloadmessages": "StartDebugging",
         "rabbitmq": "StartWithoutDebugging"
       },
       "commandVersion": "1.0"

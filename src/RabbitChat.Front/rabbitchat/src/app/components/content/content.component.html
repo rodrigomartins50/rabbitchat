@@ -1,6 +1,9 @@
 <div class="content">
 
-    <div  *ngFor="let message of messages" [innerHtml]="message.text">
+    <div  *ngFor="let message of messages">
+
+        <message [messageChat]="message"></message>
+
     </div>
 
 </div>

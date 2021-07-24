@@ -1,0 +1,4 @@
+<div class="container-message">
+    <div class="user-datetime">{{messageChat.dateRegister | date : 'dd/MM/yyyy HH:mm'}} - {{messageChat.fromUser}}</div>
+    <div class="message" [innerHtml]="messageChat.text"></div>
+</div>

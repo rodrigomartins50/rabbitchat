@@ -25,7 +25,7 @@ export class GlobalStore {
         return this._messages$.getValue();
     }
 
-    getUsername(): String {
+    getUsername(): string {
         return this._username$.getValue();
     }
 

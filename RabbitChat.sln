@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{75A004
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.Shared", "src\RabbitChat.Shared\RabbitChat.Shared.csproj", "{9238CA58-7747-4FBF-9993-1AF94071FD6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.ConsumerLoadMessages", "src\RabbitChat.ConsumerLoadMessages\RabbitChat.ConsumerLoadMessages.csproj", "{2C25E690-CC3D-4B36-BB2F-FD7A8BD21561}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{9238CA58-7747-4FBF-9993-1AF94071FD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9238CA58-7747-4FBF-9993-1AF94071FD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9238CA58-7747-4FBF-9993-1AF94071FD6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C25E690-CC3D-4B36-BB2F-FD7A8BD21561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C25E690-CC3D-4B36-BB2F-FD7A8BD21561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C25E690-CC3D-4B36-BB2F-FD7A8BD21561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C25E690-CC3D-4B36-BB2F-FD7A8BD21561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750} = {65D9B370-1FFC-4A95-A46B-525A0989F9EB}
 		{803035AA-73E1-480C-AB6A-91E88CE94FB2} = {D4EBC52F-9235-4366-B659-CE6383DB5462}
 		{9238CA58-7747-4FBF-9993-1AF94071FD6D} = {75A004BB-5374-4BEE-9722-C54B6C67775A}
+		{2C25E690-CC3D-4B36-BB2F-FD7A8BD21561} = {D4EBC52F-9235-4366-B659-CE6383DB5462}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {32836A9C-C054-40A6-B94A-FC143C99D0EE}

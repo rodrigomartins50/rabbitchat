@@ -25,7 +25,7 @@ namespace RabbitChat.Shared.Consumer
         {
             this.CreateRetryAndUnroutedSchema("rabbit_chat", new Dictionary<string, string> {
                 { "message", "message"},
-                { "read_message", "read_message"}
+                { "load_messages", "load_messages"}
             });
 
             this.CreateEventBus("event-hub");
