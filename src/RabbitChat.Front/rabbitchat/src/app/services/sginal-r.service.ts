@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import * as signalR from "@microsoft/signalr";
 import { environment } from 'src/environments/environment';
@@ -19,21 +20,24 @@ export class SignalRService {
     .withUrl(urlService + '/rabbitchathub')
     .withAutomaticReconnect([0, 2000, 50000, 2000])
     .build();
-
   }
 
   public startConnection(): Promise<void> {
 
     let conexao = this.hubConnection.start();
 
-    conexao.then(() => this.globalStore.setConnectionState(StateConnectionEnum.conectado))
-      .catch(err => console.log('Error while setConnectionState connection: ' + err));
+    conexao.then(() => {
+      this.infoConnectionIdStore();
+      this.globalStore.setConnectionState(StateConnectionEnum.conectado);
+    })
+    .catch(err => console.log('Error while setConnectionState connection: ' + err));
 
     this.hubConnection.onreconnecting(error => {
       this.globalStore.setConnectionState(StateConnectionEnum.reconectando);
     });
 
     this.hubConnection.onreconnected(error => {
+      this.infoConnectionIdStore();
       this.globalStore.setConnectionState(StateConnectionEnum.conectado);
     });
 
@@ -58,6 +62,12 @@ export class SignalRService {
     this.hubConnection.on("LoadMessages", (dto) => {
         methodReturn(dto);
     });
+  }
+
+  private infoConnectionIdStore() {
+    if(this.hubConnection.connectionId) {
+      this.globalStore.setConnectionId(this.hubConnection.connectionId);
+    }
   }
 
 }

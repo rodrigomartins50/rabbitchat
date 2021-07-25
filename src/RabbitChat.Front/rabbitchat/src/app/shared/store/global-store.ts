@@ -13,6 +13,9 @@ export class GlobalStore {
     private _username$ = new BehaviorSubject<string>("");
     public username$ = this._username$.asObservable();
 
+    private _connectionId$ = new BehaviorSubject<string|undefined>("");
+    public connectionId$ = this._connectionId$.asObservable();
+
     getConnectionState(): StateConnectionEnum {
         return this._connectionState$.getValue();
     }
@@ -31,5 +34,13 @@ export class GlobalStore {
 
     setUsername(username: string) {
         this._username$.next(username);
+    }
+
+    getConnectionId(): string| undefined {
+        return this._connectionId$.getValue();
+    }
+
+    setConnectionId(connectionId: string|undefined) {
+        this._connectionId$.next(connectionId);
     }
 }

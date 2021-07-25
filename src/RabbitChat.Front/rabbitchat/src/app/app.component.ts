@@ -3,6 +3,7 @@ import { LoadMessagesDto } from './dto/load-messages-dto';
 import { MessageChat } from './dto/messageChat';
 import { MessageService } from './services/message-service';
 import { SignalRService } from './services/sginal-r.service';
+import { StateConnectionEnum } from './shared/enum/state-connection.enum';
 import { GlobalStore } from './shared/store/global-store';
 
 @Component({
@@ -45,14 +46,25 @@ export class AppComponent {
   }  
 
   private loadInitialMessages() {
-    let dto = new LoadMessagesDto();
 
-    this.messageService.load(dto).subscribe(dto => true);
+    this.globalStore.connectionState$.subscribe(state => {
+      if(state == StateConnectionEnum.conectado) {
+        
+        let dto = new LoadMessagesDto();
+        dto.connectionId = this.globalStore.getConnectionId();
+        this.messageService.load(dto).subscribe(dto => true);
+      }
+    });
   }
 
   private watchLoadMessages() {
-    this.signalRService.loadMessessages((dto: MessageChat) => {
-      this.messages.push(dto);
-    });
+      this.signalRService.loadMessessages((listDto: MessageChat[]) => {
+
+        for (let index = 0; index < listDto.length; index++) {
+          const element = listDto[index];
+          
+          this.messages.unshift(element);
+        }
+      });
   }
 }
