@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitChat.Application.App.Command;
-using RabbitChat.Infra.AmqpAdapters.Consumer;
+using RabbitChat.Shared.AmqpAdapters.Consumer;
 using RabbitChat.Shared.Config;
 using RabbitChat.Shared.Consumer;
 

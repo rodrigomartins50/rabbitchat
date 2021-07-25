@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RabbitChat.Application\RabbitChat.Application.csproj" />
-    <ProjectReference Include="..\RabbitChat.Infra.AmqpAdapters\RabbitChat.Infra.AmqpAdapters.csproj" />
+    <ProjectReference Include="..\RabbitChat.Shared\RabbitChat.Shared.csproj" />
   </ItemGroup>
 
 </Project>

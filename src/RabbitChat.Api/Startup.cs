@@ -5,8 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RabbitChat.Application.SignalR;
-using RabbitChat.Infra.AmqpAdapters.Rpc;
-using RabbitChat.Infra.AmqpAdapters.Serialization;
+using RabbitChat.Shared.AmqpAdapters.Rpc;
+using RabbitChat.Shared.AmqpAdapters.Serialization;
 using RabbitMQ.Client;
 using System;
 
@@ -46,8 +46,7 @@ namespace RabbitChat.Api
 
             services.AddScoped(sp => new SimpleAmqpRpc(
                     sp.GetRequiredService<IModel>(),
-                    sp.GetRequiredService<IAmqpSerializer>(),
-                    TimeSpan.FromSeconds(5)
+                    sp.GetRequiredService<IAmqpSerializer>()
                 )
             );
 

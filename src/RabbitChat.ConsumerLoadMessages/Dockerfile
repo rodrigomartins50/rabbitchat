@@ -7,7 +7,6 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["src/RabbitChat.ConsumerLoadMessages/RabbitChat.ConsumerLoadMessages.csproj", "src/RabbitChat.ConsumerLoadMessages/"]
-COPY ["src/RabbitChat.Infra.AmqpAdapters/RabbitChat.Infra.AmqpAdapters.csproj", "src/RabbitChat.Infra.AmqpAdapters/"]
 COPY ["src/RabbitChat.Shared/RabbitChat.Shared.csproj", "src/RabbitChat.Shared/"]
 COPY ["src/RabbitChat.Application/RabbitChat.Application.csproj", "src/RabbitChat.Application/"]
 RUN dotnet restore "src/RabbitChat.ConsumerLoadMessages/RabbitChat.ConsumerLoadMessages.csproj"

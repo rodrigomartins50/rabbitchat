@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.Api", "src\Rabbi
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A4B01A4B-15A8-4C82-8A2A-F8B2A6FD3A91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.Infra.AmqpAdapters", "src\RabbitChat.Infra.AmqpAdapters\RabbitChat.Infra.AmqpAdapters.csproj", "{232E673B-0046-436E-BDE5-59389743B99D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.Application", "src\RabbitChat.Application\RabbitChat.Application.csproj", "{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{029BEA0A-FDDC-4DF9-85C1-9A4F05E18278}"
@@ -23,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{75A004
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.Shared", "src\RabbitChat.Shared\RabbitChat.Shared.csproj", "{9238CA58-7747-4FBF-9993-1AF94071FD6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitChat.ConsumerLoadMessages", "src\RabbitChat.ConsumerLoadMessages\RabbitChat.ConsumerLoadMessages.csproj", "{2C25E690-CC3D-4B36-BB2F-FD7A8BD21561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitChat.ConsumerLoadMessages", "src\RabbitChat.ConsumerLoadMessages\RabbitChat.ConsumerLoadMessages.csproj", "{2C25E690-CC3D-4B36-BB2F-FD7A8BD21561}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +37,6 @@ Global
 		{A4B01A4B-15A8-4C82-8A2A-F8B2A6FD3A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4B01A4B-15A8-4C82-8A2A-F8B2A6FD3A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4B01A4B-15A8-4C82-8A2A-F8B2A6FD3A91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{232E673B-0046-436E-BDE5-59389743B99D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{232E673B-0046-436E-BDE5-59389743B99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{232E673B-0046-436E-BDE5-59389743B99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{232E673B-0046-436E-BDE5-59389743B99D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,7 +59,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{206143BC-AA0B-43C3-B3EE-01B132ABAC1C} = {029BEA0A-FDDC-4DF9-85C1-9A4F05E18278}
-		{232E673B-0046-436E-BDE5-59389743B99D} = {75A004BB-5374-4BEE-9722-C54B6C67775A}
 		{DADC51C3-CE59-4891-BFA2-3BCAB82DF750} = {65D9B370-1FFC-4A95-A46B-525A0989F9EB}
 		{803035AA-73E1-480C-AB6A-91E88CE94FB2} = {D4EBC52F-9235-4366-B659-CE6383DB5462}
 		{9238CA58-7747-4FBF-9993-1AF94071FD6D} = {75A004BB-5374-4BEE-9722-C54B6C67775A}

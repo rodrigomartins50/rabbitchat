@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using RabbitChat.Application.App.Command;
-using RabbitChat.Application.SignalR;
-using RabbitChat.Infra.AmqpAdapters.Rpc;
+using RabbitChat.Shared.AmqpAdapters.Rpc;
 using System;
 
 namespace RabbitChat.Api.Controllers

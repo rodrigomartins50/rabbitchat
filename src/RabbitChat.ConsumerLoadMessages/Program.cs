@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RabbitChat.Application.App.Command;
-using RabbitChat.Infra.AmqpAdapters.Consumer;
+using RabbitChat.Shared.AmqpAdapters.Consumer;
 using RabbitChat.Shared.Config;
 using RabbitChat.Shared.Consumer;
 using System;

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Polly;
 using RabbitChat.Data;
 using RabbitChat.Data.Repositories;
-using RabbitChat.Infra.AmqpAdapters.Serialization;
+using RabbitChat.Shared.AmqpAdapters.Serialization;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Exceptions;
 using System;
